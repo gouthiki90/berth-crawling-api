@@ -5,6 +5,9 @@ import no_connection_test
 import my_sql_connection
 import data_check_all
 from datetime import datetime, timedelta
+import json
+from pandas import read_html, DataFrame
+from numpy import array
 
 # 날짜 세팅
 now = datetime.now()
@@ -27,73 +30,66 @@ def incheon_download():
                 now.strftime("%Y-%m-%d"), after.strftime("%Y-%m-%d"))
             paging_number_IC = '&currentPageNo={}'.format(page_no)
             print(req_url_IC + query_date_IC + paging_number_IC)
+
             # 페이지 넘버, 1씩 증가
             page_no = page_no + 1
-            response_IC = requests.get(
-                req_url_IC + query_date_IC + paging_number_IC)
-            html = response_IC.text
-            soup = BeautifulSoup(html, 'html.parser')  # get html
-            get_tables = parser_functions.make2d(soup)
-            print(get_tables)
+            pandas_tables = read_html(req_url_IC + query_date_IC +
+                                      paging_number_IC, )
+            get_list_tables = DataFrame(pandas_tables, columns=[
+                '터미널', '선석', '모선항차', '입항차/출항차', '년도', '선박명 Bitt(M)', '접안(예정) 일시', '반입마감 일시', '출항(예정) 일시', '선사', '양하수량 (VAN)', '적하수량 (VAN)', 'Shift'])
 
-            get_table_text.append(get_tables)
+            np_list = array([
+                '터미널', '선석', '모선항차', '입항차/출항차', '년도', '선박명 Bitt(M)', '접안(예정) 일시', '반입마감 일시', '출항(예정) 일시', '선사', '양하수량 (VAN)', '적하수량 (VAN)', 'Shift'], dtype=object)
+            print(np_list)
+            # get_table_text.append(get_list_tables.values)
 
             if page_no == 5:
                 break
 
-        # 2차원 len
-        total = len(get_table_text)
-
-        for i in range(0, total):
-            for index, get in enumerate(get_table_text[i], 1):
-                print('{}번째 {}데이터'.format(index, get))
-
-                if get[1] == "한진인천컨테이너터미널":
-                    get[1] = "HJIT"
-                elif get[1] == "선광신컨테이너터미널":
-                    get[1] = "SNCT"
-                elif get[1] == "E1컨테이너터미널":
-                    get[1] = "E1CT"
-                elif get[1] == "인천컨테이너터미널":
-                    get[1] = "ICT"
-
-                oid = get[3]  # oid
-                trminl_code = get[1]  # 터미널코드
-                berth_code = get[2]  # 선석코드
-                trminl_voyg = get[3]  # 모선-항차
-                trminl_shipnm = get[5]  # 선명
-                csdhp_prarnde = get[6]  # 접안 (예정) 일시
-                carry_fin_day = get[7]  # 반입 마감 시간
-                tkoff_prarnde = get[8]  # 출항 (예정) 일시
-                wtorcmp_code = get[9]  # 선사
-                landng_qy = get[10]  # 양하
-                shipng_qy = get[11]  # 적하
-                shifting = get[12]  # shift
-
-                # dict로 만들기
-                result = {
-                    "oid": oid,
-                    "trminlCode": trminl_code,
-                    "berthCode": berth_code,
-                    "trminlVoyg": trminl_voyg,
-                    "trminlShipnm": trminl_shipnm,
-                    "wtorcmpCode": wtorcmp_code,
-                    "carryFiniDay": carry_fin_day,
-                    "csdhpPrarnde": csdhp_prarnde,
-                    "tkoffPrarnde": tkoff_prarnde,
-                    "landngQy": landng_qy,
-                    "shipngQy": shipng_qy,
-                    "shifting": shifting,
-                }
-
-                # print(result)
-                data_check_list.append(result)
-
-        now_data = my_sql_connection.select_incheon_all(
-            "HJIT", "SNCT", "E1CT", "ICT")
-        checked_data = data_check_all.data_check(data_check_list, now_data)
-        # no_connection_test.post(checked_data)
-        no_connection_test.postJan(checked_data)
-        no_connection_test.postToHangman(checked_data)
+        # for index, get in enumerate(get_table_text, 1):
+        #     print('{}번째 {}데이터'.format(index, get))
+            # if get[1] == "한진인천컨테이너터미널":
+            #     get[1] = "HJIT"
+            # elif get[1] == "선광신컨테이너터미널":
+            #     get[1] = "SNCT"
+            # elif get[1] == "E1컨테이너터미널":
+            #     get[1] = "E1CT"
+            # elif get[1] == "인천컨테이너터미널":
+            #     get[1] = "ICT"
+            # oid = get[3]  # oid
+            # trminl_code = get[1]  # 터미널코드
+            # berth_code = get[2]  # 선석코드
+            # trminl_voyg = get[3]  # 모선-항차
+            # trminl_shipnm = get[5]  # 선명
+            # csdhp_prarnde = get[6]  # 접안 (예정) 일시
+            # carry_fin_day = get[7]  # 반입 마감 시간
+            # tkoff_prarnde = get[8]  # 출항 (예정) 일시
+            # wtorcmp_code = get[9]  # 선사
+            # landng_qy = get[10]  # 양하
+            # shipng_qy = get[11]  # 적하
+            # shifting = get[12]  # shift
+            # # dict로 만들기
+            # result = {
+            #     "oid": oid,
+            #     "trminlCode": trminl_code,
+            #     "berthCode": berth_code,
+            #     "trminlVoyg": trminl_voyg,
+            #     "trminlShipnm": trminl_shipnm,
+            #     "wtorcmpCode": wtorcmp_code,
+            #     "carryFiniDay": carry_fin_day,
+            #     "csdhpPrarnde": csdhp_prarnde,
+            #     "tkoffPrarnde": tkoff_prarnde,
+            #     "landngQy": landng_qy,
+            #     "shipngQy": shipng_qy,
+            #     "shifting": shifting,
+            # }
+            # # print(result)
+            # data_check_list.append(result)
+            # now_data = my_sql_connection.select_incheon_all(
+            #     "HJIT", "SNCT", "E1CT", "ICT")
+            # checked_data = data_check_all.data_check(data_check_list, now_data)
+            # # no_connection_test.post(checked_data)
+            # no_connection_test.postJan(checked_data)
+            # no_connection_test.postToHangman(checked_data)
     except Exception as e:
         print(e)

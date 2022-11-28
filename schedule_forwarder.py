@@ -22,8 +22,8 @@ async def get_forwarder():
     pyeongtack_download(req_url_PT, query_date_PT,
                         query_sort_PT, query_page_PT)
     await asyncio.sleep(1)
-    incheon_download()
-    await asyncio.sleep(1)
+    # incheon_download()
+    # await asyncio.sleep(1)
     gwaongyang_download(req_url_GW)
     await asyncio.sleep(1)
     busan_download(req_url_BS)
