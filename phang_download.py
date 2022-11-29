@@ -63,7 +63,7 @@ def pohang_download(req_url, query_date):
 
         # no_connection_test.post(checked_data)
         no_connection_test.postJan(checked_data)
-        no_connection_test.postToHangman(checked_data)
+        no_connection_test.postToHangman(data_check_list)
 
     except Exception as e:
         print(e)

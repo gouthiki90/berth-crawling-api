@@ -39,6 +39,8 @@ def ulsan_download(req_url):
                 'reshmtQy': result['vsbVoyTsvan'],  # 이적
             }
 
+            print(data)
+
             data_check_list.append(data)
 
         now_data = my_sql_connection.select_all("UNCT")
