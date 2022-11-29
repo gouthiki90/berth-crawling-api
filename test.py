@@ -1,6 +1,5 @@
 # 스케쥴 테스트
-from busan_download import busan_download
-from get_req_urls import req_url_BS
+from incheon_download import incheon_download
 import aioschedule as schedule
 import asyncio
 import time
@@ -8,10 +7,10 @@ import time
 
 async def test():
     print("-"*50 + "스케쥴 시작" + "-"*50)
-    busan_download(req_url_BS)
+    incheon_download()
     print("-"*50 + "스케쥴 끝" + "-"*50)
 
-schedule.every(40).seconds.do(test)
+schedule.every(20).seconds.do(test)
 loop = asyncio.get_event_loop()
 
 while True:
