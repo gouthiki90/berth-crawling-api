@@ -1,7 +1,7 @@
 import requests
 
 # requests 기본 데이터
-post_url = 'http://13.125.119.4:3086/berthStatPy/'
+post_url = 'http://localhost:3001/api/v1/berthStatPy/'
 post_busan_url = 'http://localhost:3001/api/v1/berthStatPy/busan'
 post_jan_url = 'http://54.180.73.195/receive'
 post_hangman_url = 'http://localhost:3040/berth-py'

@@ -34,20 +34,25 @@ def incheon_download():
             # 페이지 넘버, 1씩 증가
             page_no = page_no + 1
             pandas_tables = read_html(req_url_IC + query_date_IC +
-                                      paging_number_IC, )
-            get_list_tables = DataFrame(pandas_tables, columns=[
-                '터미널', '선석', '모선항차', '입항차/출항차', '년도', '선박명 Bitt(M)', '접안(예정) 일시', '반입마감 일시', '출항(예정) 일시', '선사', '양하수량 (VAN)', '적하수량 (VAN)', 'Shift'])
+                                      paging_number_IC)
 
-            np_list = array([
-                '터미널', '선석', '모선항차', '입항차/출항차', '년도', '선박명 Bitt(M)', '접안(예정) 일시', '반입마감 일시', '출항(예정) 일시', '선사', '양하수량 (VAN)', '적하수량 (VAN)', 'Shift'], dtype=object)
-            print(np_list)
-            # get_table_text.append(get_list_tables.values)
+            # get_list_tables = DataFrame(array([pandas_tables]), columns=['터미널', '선석', '모선항차 입항차/출항차', '년도',
+            #                             '선박명 Bitt(M)', '접안(예정) 일시', '반입마감 일시', '출항(예정) 일시', '선사', '양하수량 (VAN)', '적하수량 (VAN)', 'Shift'], dtype=object)
+            # print(get_list_tables)
+
+            df = DataFrame()
+            to_json = df.to_dict(pandas_tables)
+            print(to_json)
+            # get_table_text.append()
+
+            # print(pandas_tables)
 
             if page_no == 5:
                 break
 
-        # for index, get in enumerate(get_table_text, 1):
+        # for index, get in enumerate(get_table_text, 0):
         #     print('{}번째 {}데이터'.format(index, get))
+
             # if get[1] == "한진인천컨테이너터미널":
             #     get[1] = "HJIT"
             # elif get[1] == "선광신컨테이너터미널":
@@ -56,6 +61,7 @@ def incheon_download():
             #     get[1] = "E1CT"
             # elif get[1] == "인천컨테이너터미널":
             #     get[1] = "ICT"
+
             # oid = get[3]  # oid
             # trminl_code = get[1]  # 터미널코드
             # berth_code = get[2]  # 선석코드
@@ -68,6 +74,7 @@ def incheon_download():
             # landng_qy = get[10]  # 양하
             # shipng_qy = get[11]  # 적하
             # shifting = get[12]  # shift
+
             # # dict로 만들기
             # result = {
             #     "oid": oid,
@@ -83,8 +90,9 @@ def incheon_download():
             #     "shipngQy": shipng_qy,
             #     "shifting": shifting,
             # }
-            # # print(result)
+            # print(result)
             # data_check_list.append(result)
+
             # now_data = my_sql_connection.select_incheon_all(
             #     "HJIT", "SNCT", "E1CT", "ICT")
             # checked_data = data_check_all.data_check(data_check_list, now_data)
