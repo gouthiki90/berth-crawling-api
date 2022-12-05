@@ -7,6 +7,8 @@ print(now)
 after = now + timedelta(days=7)
 print(after)
 
+service_key = 'eCazEq%2FCP4iBdrQDcQQrLr3rgUrV%2ByZOFRdwxGTrcfeZbe3FqDvkQ6iMAWgeXRDOa%2FABNLYI3Dhz7hzxyUuI4A%3D%3D'
+
 # pohang req url
 req_url_PH = 'http://www.pohangport.com/info/ShipBerthT.pict'
 query_date_PH = '?STARTDATE={}&ENDDATE={}'.format(
@@ -23,10 +25,11 @@ query_date_PT = '?startDate={}&endDate={}'.format(
 query_sort_PT = '&sort=ETB'
 query_page_PT = '&page=1'
 
-# # incheon req url
-# req_url_IC = 'https://scon.icpa.or.kr/vescall/list.do'
-# query_date_IC = '?searchStartDt={}&searchEndDt={}'.format(
-#     now.strftime("%Y-%m-%d"), after.strftime("%Y-%m-%d"))
+# incheon req url
+req_url_IC = 'https://opendata.icpa.or.kr/OpenAPI/service/ipaBerthUse/getBerthUse?ServiceKey={}'.format(
+    service_key)
+query_date_IC = '&endRow={}&skipRow={}&numOfRows={}&pageSize={}'.format(
+    '1', '0', '1', '1')
 
 # gwaongyang req url
 main_req_url_GW = 'http://www.gwct.co.kr/e-service2/?m=B&s=2'
