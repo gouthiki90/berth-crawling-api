@@ -5,6 +5,7 @@ post_url = 'http://localhost:3001/api/v1/berthStatPy/'
 post_busan_url = 'http://localhost:3001/api/v1/berthStatPy/busan'
 post_jan_url = 'http://54.180.73.195/receive'
 post_hangman_url = 'http://localhost:3040/berth-py'
+
 headers = {
     'Content-Type': 'application/json; charset=utf-8'
 }
