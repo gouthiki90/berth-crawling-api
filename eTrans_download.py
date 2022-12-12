@@ -1,24 +1,30 @@
 import requests
-
-# common options
-url = "https://etrans3.klnet.co.kr/main/searchTracking.do"
-session = "JSESSIONID=zo2MfSaDmZwjAU8V18TABTycKHpc1gsSefkPuMDTChetrUR0b8d05cwZ4r8Ju4zG.amV1c19kb21haW4vTmV3LVdBUzFfc2VydmVyMw==; WMONID=jR8q99wHNdc"
-default_data = {
-    "dma_search": {
-        "KLNET_ID": "",
-        "SEARCH_DATA": "FSCU5909470",
-        "NOTICE_CNT": 25
-    }
-}
+from my_sql_connection import select_container
+from no_connection_test import putToHangman
 
 
-def download_etrans():
-    response = requests.post(url, json=default_data)
-    print(response.json())
+def download_etrans(url):
+    # 조회할 컨테이너 select
+    container_list = select_container()
 
-    get_data_json = response.json()
-    get_info_list = get_data_json['dma_tracking']
-    print(get_info_list)
+    if len(container_list) == 0:
+        return []
 
+    # list를 토대로 요청
+    for index, result in enumerate(container_list, 1):
+        print(result)
 
-download_etrans()
+        default_data = {
+            "dma_search": {
+                "KLNET_ID": "{}".format(result['CNTR_NO']),
+                "SEARCH_DATA": "FSCU5909470",
+                "NOTICE_CNT": 25
+            }
+        }
+
+        # eTrans 요청
+        response = requests.post(url, json=default_data)
+        container_response_data = response.json()
+
+        # nest.js로 전송
+        putToHangman(container_response_data)

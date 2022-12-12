@@ -49,3 +49,7 @@ query_date = '&startDate={}&endDate={}'.format(
 
 req_url_BS = main_url + service_key + query_type + \
     query_page + query_rows + query_date
+
+
+# eTrans url
+eTrans_url = "https://etrans3.klnet.co.kr/main/searchTracking.do"
