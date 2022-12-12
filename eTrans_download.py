@@ -17,8 +17,8 @@ def download_etrans(url):
 
             default_data = {
                 "dma_search": {
-                    "KLNET_ID": "{}".format(result['CNTR_NO']),
-                    "SEARCH_DATA": "FSCU5909470",
+                    "KLNET_ID": "",
+                    "SEARCH_DATA": "{}".format(result['CNTR_NO']),
                     "NOTICE_CNT": 25
                 }
             }
