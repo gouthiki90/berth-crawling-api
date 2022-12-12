@@ -26,7 +26,7 @@ def busan_download(req_url):
 
         now_data = my_sql_connection.select_busan_all()
         checked_data = data_check_all.data_check(data_check_list, now_data)
-        # no_connection_test.post(checked_data)
+        no_connection_test.post(checked_data)
         no_connection_test.postJan(checked_data)
         no_connection_test.postToHangman(checked_data)
 
