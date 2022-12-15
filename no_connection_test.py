@@ -4,8 +4,8 @@ import requests
 post_url = 'http://13.125.119.4:3005/api/v1/berthStatPy/'
 post_busan_url = 'http://localhost:3001/api/v1/berthStatPy/busan'
 post_jan_url = 'http://54.180.73.195/receive'
-post_hangman_url = 'https://ship-schedule.insystem.kr/berth-py'
-post_hangman_url_confirm = 'https://ship-schedule.insystem.kr/containers/confirm-list-py'
+post_hangman_url = 'https://localhost:443/berth-py'
+post_hangman_url_confirm = 'https://localhost:443/containers/confirm-list-py'
 
 headers = {
     'Content-Type': 'application/json; charset=utf-8'
