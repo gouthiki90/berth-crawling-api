@@ -60,7 +60,7 @@ try:
     def select_container():
         try:
             cur = con.cursor()
-            sql = "SELECT CNTR_NO FROM hang_man.container WHERE CNTR_STATUS NOT IN('78', '59') GROUP BY CNTR_NO ORDER BY STATUS_DT ASC"
+            sql = "SELECT CNTR_NO FROM hang_man.container WHERE STATUS_DT between (SELECT date_format(now(), '%Y-%m-%d') FROM dual) AND (SELECT date_format(DATE_ADD(now(), INTERVAL 5 DAY), '%Y-%m-%d') FROM dual);"
             print(sql)
             cur.execute(sql)
             # con.close()
