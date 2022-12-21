@@ -61,12 +61,8 @@ def pohang_download(req_url, query_date):
         now_data = my_sql_connection.select_all("KPOL")
         checked_data = data_check_all.data_check(data_check_list, now_data)
 
-        if checked_data == None:
-            return []
-        else:
-            # no_connection_test.post(checked_data)
-            no_connection_test.postJan(checked_data)
-            no_connection_test.postToHangman(checked_data)
+        no_connection_test.postJan(data_check_list)
+        no_connection_test.postToHangman(data_check_list)
 
     except Exception as e:
         print(e)
