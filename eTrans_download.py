@@ -8,27 +8,27 @@ def download_etrans(url):
     container_list = select_container()
 
     try:
-        if len(container_list) == 0:
+        if container_list == None:
             return []
+        else:
+            # list를 토대로 요청
+            for index, result in enumerate(container_list, 1):
+                print(result)
 
-        # list를 토대로 요청
-        for index, result in enumerate(container_list, 1):
-            print(result)
-
-            default_data = {
-                "dma_search": {
-                    "KLNET_ID": "",
-                    "SEARCH_DATA": "{}".format(result['CNTR_NO']),
-                    "NOTICE_CNT": 25
+                default_data = {
+                    "dma_search": {
+                        "KLNET_ID": "",
+                        "SEARCH_DATA": "{}".format(result['CNTR_NO']),
+                        "NOTICE_CNT": 25
+                    }
                 }
-            }
 
-            # eTrans 요청
-            response = requests.post(url, json=default_data)
-            container_response_data = response.json()
+                # eTrans 요청
+                response = requests.post(url, json=default_data)
+                container_response_data = response.json()
 
-            # nest.js로 전송
-            putToHangman(container_response_data)
+                # nest.js로 전송
+                putToHangman(container_response_data)
 
     except Exception as e:
         print(e)
