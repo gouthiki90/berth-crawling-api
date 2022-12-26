@@ -41,8 +41,12 @@ def pyeongtack_download(req_url, query_date, query_sort, query_page):
         now_data = my_sql_connection.select_all("PCCT")
         checked_data = data_check_all.data_check(data_check_list, now_data)
 
-        no_connection_test.postJan(data_check_list)
-        no_connection_test.postToHangman(data_check_list)
+        if data_check_list == None:
+            return []
+        else:
+            # no_connection_test.post(checked_data)
+            no_connection_test.postJan(data_check_list)
+            no_connection_test.postToHangman(data_check_list)
 
     except Exception as e:
         response.close()
