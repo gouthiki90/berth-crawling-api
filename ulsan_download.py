@@ -30,7 +30,6 @@ def ulsan_download(req_url):
                 'trminlShipnm': result['cdvVslName'],  # 선명
                 'wtorcmpCode': result['cdvVslOperator'],  # 선사
                 'csdhpDrc': result['vsbVoyStartpos'],  # 접안위치
-                'trminlShipnm': result['vsbVoyOutservice'],  # 선대명
                 'carryFiniDay': result['cct'],  # 반입 마감 시간
                 'csdhpPrarnde': result['etb'],  # 접안 예정 일시
                 'tkoffPrarnde': result['etd'],  # 출항 예정 일시
