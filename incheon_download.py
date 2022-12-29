@@ -97,7 +97,7 @@ def incheon_download():
             return []
         else:
             # no_connection_test.post(checked_data)
-            no_connection_test.postJan(data_check_list)
+            # no_connection_test.postJan(data_check_list)
             no_connection_test.postToHangman(data_check_list)
 
     except Exception as e:
