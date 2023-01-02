@@ -58,8 +58,8 @@ def pohang_download(req_url, query_date):
             # print(result)
             data_check_list.append(result)
 
-        now_data = my_sql_connection.select_all("KPOL")
-        checked_data = data_check_all.data_check(data_check_list, now_data)
+        # now_data = my_sql_connection.select_all("KPOL")
+        # checked_data = data_check_all.data_check(data_check_list, now_data)
 
         if data_check_list == None:
             return []

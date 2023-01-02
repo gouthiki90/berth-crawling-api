@@ -24,8 +24,8 @@ def busan_download(req_url):
             result['oid'] = result['trminlVoyg']
             data_check_list.append(result)
 
-        now_data = my_sql_connection.select_busan_all()
-        checked_data = data_check_all.data_check(data_check_list, now_data)
+        # now_data = my_sql_connection.select_busan_all()
+        # checked_data = data_check_all.data_check(data_check_list, now_data)
 
         if data_check_list == None:
             return []

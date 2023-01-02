@@ -38,8 +38,8 @@ def pyeongtack_download(req_url, query_date, query_sort, query_page):
             }
             data_check_list.append(send_data)
 
-        now_data = my_sql_connection.select_all("PCCT")
-        checked_data = data_check_all.data_check(data_check_list, now_data)
+        # now_data = my_sql_connection.select_all("PCCT")
+        # checked_data = data_check_all.data_check(data_check_list, now_data)
 
         if data_check_list == None:
             return []

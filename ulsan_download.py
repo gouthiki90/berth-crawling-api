@@ -42,8 +42,8 @@ def ulsan_download(req_url):
 
             data_check_list.append(data)
 
-        now_data = my_sql_connection.select_all("UNCT")
-        checked_data = data_check_all.data_check(data_check_list, now_data)
+        # now_data = my_sql_connection.select_all("UNCT")
+        # checked_data = data_check_all.data_check(data_check_list, now_data)
 
         if data_check_list == None:
             return []

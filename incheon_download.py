@@ -89,9 +89,9 @@ def incheon_download():
                 # print(result)
                 data_check_list.append(result)
 
-        now_data = my_sql_connection.select_incheon_all(
-            "HJIT", "SNCT", "E1CT", "ICT")
-        checked_data = data_check_all.data_check(data_check_list, now_data)
+        # now_data = my_sql_connection.select_incheon_all(
+        #     "HJIT", "SNCT", "E1CT", "ICT")
+        # checked_data = data_check_all.data_check(data_check_list, now_data)
 
         if data_check_list == None:
             return []
