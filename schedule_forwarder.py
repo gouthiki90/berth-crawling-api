@@ -34,9 +34,9 @@ async def get_forwarder():
 
     # 컨테이너 크롤링
     download_etrans(eTrans_url)
-    await asyncio.sleep(1)
+    await asyncio.sleep(3)
 
-aioschedule.every(10).seconds.do(get_forwarder)
+aioschedule.every(10).minutes.do(get_forwarder)
 loop = asyncio.get_event_loop()
 
 while True:
