@@ -18,6 +18,7 @@ import time
 
 async def get_forwarder():
     # 터미널 크롤링
+    print("::: start schedule... :::")
     pohang_download(req_url_PH, query_date_PH)
     await asyncio.sleep(3)
     ulsan_download(req_url_US)
@@ -35,16 +36,16 @@ async def get_forwarder():
     # 컨테이너 크롤링
     download_etrans(eTrans_url)
     await asyncio.sleep(3)
+    print("::: end schedule... :::")
 
 aioschedule.every(10).minutes.do(get_forwarder)
 loop = asyncio.get_event_loop()
 
 while True:
     try:
-        print("::: start schedule... :::")
         loop.run_until_complete(aioschedule.run_pending())
         time.sleep(1)
-        print("::: end schedule... :::")
+
     except Exception as e:
         print(e)
         print("::: erorr!! now closing... :::")
