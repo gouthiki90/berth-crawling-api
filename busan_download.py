@@ -25,7 +25,10 @@ def busan_download(req_url):
         if data_check_list == None:
             return []
         else:
+            print("busan" + "-"*30)
+            print(data_check_list)
             no_connection_test.postToHangman(data_check_list)
+            print("busan" + "-"*30)
 
     except Exception as e:
         print(e)

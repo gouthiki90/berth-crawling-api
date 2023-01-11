@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
 import no_connection_test
-import my_sql_connection
-import data_check_all
 from datetime import datetime, timedelta
 
 # 날짜 세팅

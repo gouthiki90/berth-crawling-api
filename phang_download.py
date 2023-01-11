@@ -1,13 +1,10 @@
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
 import requests
-import data_check_all
-import my_sql_connection
 import no_connection_test
 
 
 def pohang_download(req_url, query_date):
-    print(req_url + query_date)
     data_check_list = []
 
     try:

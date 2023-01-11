@@ -10,7 +10,6 @@ from get_req_urls import req_url_PH, query_date_PH
 from get_req_urls import req_url_US
 from get_req_urls import req_url_GW
 from get_req_urls import req_url_BS
-from get_req_urls import eTrans_url
 import aioschedule
 import time
 
