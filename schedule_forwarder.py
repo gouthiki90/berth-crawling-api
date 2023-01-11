@@ -2,7 +2,6 @@ import asyncio
 from phang_download import pohang_download
 from ulsan_download import ulsan_download
 from pyeongtack_download import pyeongtack_download
-from eTrans_download import download_etrans
 from gwongyang_download import gwaongyang_download
 from busan_download import busan_download
 from get_req_urls import req_url_PT, query_date_PT, query_page_PT, query_sort_PT
