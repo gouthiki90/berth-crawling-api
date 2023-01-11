@@ -49,5 +49,5 @@ Thumbs.db
 *.wmv
 
 # conn source file
-./my_sql_connection.py
+my_sql_connection.py/
 
