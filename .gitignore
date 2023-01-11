@@ -48,3 +48,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+# conn source file
+./my_sql_connection.py
+
