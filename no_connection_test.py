@@ -6,6 +6,8 @@ post_busan_url = 'http://localhost:3001/api/v1/berthStatPy/busan'
 post_jan_url = 'http://54.180.73.195/receive'
 post_hangman_url = 'https://ship-schedule.insystem.kr/berth-py'
 post_hangman_url_confirm = 'https://ship-schedule.insystem.kr/containers/confirm-list-py'
+post_hangman_url_local = 'http://localhost:3040/berth-py'
+post_hangman_url_confirm_local = 'http://localhost:3040/containers/confirm-list-py'
 
 headers = {
     'Content-Type': 'application/json; charset=utf-8'
@@ -19,7 +21,7 @@ def post(result):
 
 
 def postToHangman(result):
-    respone = requests.post(post_hangman_url, json=result,
+    respone = requests.post(post_hangman_url_local, json=result,
                             headers=headers, verify=False)
     respone.close()
 
@@ -36,5 +38,5 @@ def postJan(result):
 
 
 def putToHangman(result):
-    requests.post(post_hangman_url_confirm, json=result,
+    requests.post(post_hangman_url_confirm_local, json=result,
                   headers=headers, verify=False)

@@ -61,6 +61,13 @@ def gwaongyang_download(req_url):
         else:
             no_connection_test.postToHangman(data_check_list)
 
+        if data_check_list == None:
+            return []
+        else:
+            # no_connection_test.post(checked_data)
+            no_connection_test.postJan(data_check_list)
+            no_connection_test.postToHangman(data_check_list)
+
     except Exception as e:
         print(e)
     finally:
