@@ -12,12 +12,11 @@ def gwaongyang_download(req_url):
         soup = BeautifulSoup(html, 'html.parser')  # get html
         table = soup.select_one(".AA_list")
         get_tables = parser_functions.make2d(table)
-        print(get_tables)
 
         for index, get in enumerate(get_tables, 1):
             # print('{}번째 {}데이터'.format(index, get))
 
-            oid = get[1]  # oid
+            oid = 'GWCT' + '-' + get[1]  # oid
             berth_code = get[0]  # 선석
             trminl_voyg = get[1]  # 모선-항차
             csdhp_drc = get[3]  # 접안방향
@@ -64,8 +63,6 @@ def gwaongyang_download(req_url):
         if data_check_list == None:
             return []
         else:
-            # no_connection_test.post(checked_data)
-            # no_connection_test.postJan(data_check_list)
             no_connection_test.postToHangman(data_check_list)
 
     except Exception as e:

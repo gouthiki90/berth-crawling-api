@@ -21,7 +21,7 @@ def ulsan_download(req_url):
             # print('{}번째 데이터 : {}'.format(index, result))
 
             data = {
-                'oid': result['aa'],
+                'oid': 'UNCT' + '-' + result['aa'],
                 'trminlCode': 'UNCT',  # 터미널코드
                 'berthCode': result['position'],  # 선석
                 'trminlVoyg': result['aa'],  # 모선항차
@@ -35,8 +35,6 @@ def ulsan_download(req_url):
                 'shipngQy': result['vsbVoyLoadvan'],  # 적하
                 'reshmtQy': result['vsbVoyTsvan'],  # 이적
             }
-
-            print(data)
 
             data_check_list.append(data)
 

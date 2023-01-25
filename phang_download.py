@@ -20,7 +20,7 @@ def pohang_download(req_url, query_date):
         for index, get in enumerate(get_tables, 1):
             # print('{}번째 {}데이터'.format(index, get))
 
-            oid = get[2]  # oid
+            oid = 'KPOL' + '-' + get[2]  # oid
             trminl_shipnm = get[1]  # 모선명
             trminl_voyg = get[2]  # 모선-항차
             wtorcmp_code = get[4]  # 선사
@@ -63,8 +63,6 @@ def pohang_download(req_url, query_date):
         if data_check_list == None:
             return []
         else:
-            # no_connection_test.post(checked_data)
-            # no_connection_test.postJan(data_check_list)
             no_connection_test.postToHangman(data_check_list)
 
     except Exception as e:
