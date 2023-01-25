@@ -22,9 +22,9 @@ async def get_forwarder():
     await asyncio.sleep(3)
     ulsan_download(req_url_US)
     await asyncio.sleep(3)
-    pyeongtack_download(req_url_PT, query_date_PT,
-                        query_sort_PT, query_page_PT)
-    await asyncio.sleep(1)
+    # pyeongtack_download(req_url_PT, query_date_PT,
+    #                     query_sort_PT, query_page_PT)
+    # await asyncio.sleep(3)
     gwaongyang_download(req_url_GW)
     await asyncio.sleep(3)
     busan_download(req_url_BS)
