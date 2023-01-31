@@ -60,11 +60,6 @@ def pohang_download(req_url, query_date):
         else:
             no_connection_test.postToHangman(data_check_list)
 
-        if data_check_list == None:
-            return []
-        else:
-            no_connection_test.postToHangman(data_check_list)
-
     except Exception as e:
         print(e)
 
