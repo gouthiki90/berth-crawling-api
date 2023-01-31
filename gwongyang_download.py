@@ -16,7 +16,7 @@ def gwaongyang_download(req_url):
         for index, get in enumerate(get_tables, 1):
             # print('{}번째 {}데이터'.format(index, get))
 
-            oid = 'GWCT' + '-' + get[1]  # oid
+            oid = get[1]  # oid
             berth_code = get[0]  # 선석
             trminl_voyg = get[1]  # 모선-항차
             csdhp_drc = get[3]  # 접안방향

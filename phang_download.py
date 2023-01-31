@@ -20,7 +20,7 @@ def pohang_download(req_url, query_date):
         for index, get in enumerate(get_tables, 1):
             # print('{}번째 {}데이터'.format(index, get))
 
-            oid = 'KPOL' + '-' + get[2]  # oid
+            oid = get[2]  # oid
             trminl_shipnm = get[1]  # 모선명
             trminl_voyg = get[2]  # 모선-항차
             wtorcmp_code = get[4]  # 선사

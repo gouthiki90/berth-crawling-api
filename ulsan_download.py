@@ -21,7 +21,7 @@ def ulsan_download(req_url):
             # print('{}번째 데이터 : {}'.format(index, result))
 
             data = {
-                'oid': 'UNCT' + '-' + result['aa'],
+                'oid': result['aa'],
                 'trminlCode': 'UNCT',  # 터미널코드
                 'berthCode': result['position'],  # 선석
                 'trminlVoyg': result['aa'],  # 모선항차
