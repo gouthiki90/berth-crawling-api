@@ -21,7 +21,7 @@ def post(result):
 
 
 def postToHangman(result):
-    respone = requests.post(post_hangman_url, json=result,
+    respone = requests.post(post_hangman_url_local, json=result,
                             headers=headers, verify=False)
     respone.close()
 

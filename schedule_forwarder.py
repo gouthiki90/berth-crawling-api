@@ -26,7 +26,7 @@ async def get_forwarder():
     await asyncio.sleep(3)
     print("::: end schedule... :::")
 
-aioschedule.every(10).minutes.do(get_forwarder)
+aioschedule.every(30).seconds.do(get_forwarder)
 loop = asyncio.get_event_loop()
 
 while True:
