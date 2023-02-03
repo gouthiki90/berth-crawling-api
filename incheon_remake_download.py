@@ -14,11 +14,15 @@ print(after, "-"*20 + "incheon after" + "-"*20)
 
 
 def incheon_download():
+    # 칼럼 카운트
     index_cout = 0
+    # 인천 페이징 카운트
     page_count = ['1', '2', '3']
+    # 스케줄 리스트
     result_list = []
 
     try:
+        # 페이지 카운트로 반복
         for page in page_count:
             url = "https://scon.icpa.or.kr/vescall/list.do?menuKey=19&searchStartDt={}&searchEndDt={}&currentPageNo={}".format(
                 before.strftime("%Y-%m-%d"), after.strftime("%Y-%m-%d"), page)
@@ -38,6 +42,7 @@ def incheon_download():
 
             result_dict = {}
 
+            # 받은 데이터 len으로 반복
             for index, get in enumerate(result, 1):
 
                 # string parse
@@ -45,8 +50,6 @@ def incheon_download():
 
                 if make_str != '<td>조회된 데이터가 없습니다.</td>':
                     index_cout = index_cout + 1
-
-                # print(index_cout)
 
                 # html parse
                 remove_td_tags = make_str.strip(
@@ -60,6 +63,16 @@ def incheon_download():
                     # dict으로 만들기
                     result_dict['num'] = incheon_schedule_data
                 elif index_cout == 2:
+
+                    if incheon_schedule_data == '한진':
+                        incheon_schedule_data = 'HJIT'
+                    elif incheon_schedule_data == '선광':
+                        incheon_schedule_data = 'SNCT'
+                    elif incheon_schedule_data == 'E1':
+                        incheon_schedule_data = 'E1CT'
+                    elif incheon_schedule_data == '인천':
+                        incheon_schedule_data = 'ICT'
+
                     result_dict['trminlCode'] = incheon_schedule_data
                 elif index_cout == 3:
                     result_dict['berthCode'] = incheon_schedule_data
@@ -87,13 +100,10 @@ def incheon_download():
                 if index_cout == 13:
                     # heap point 때문에 깊은 복사를 해서 리스트에 담기
                     copy_result = result_dict.copy()
-                    print(copy_result)
                     result_list.append(copy_result)
-                    print('-'*50)
-                    print(result_list)
-                    print('-'*50)
                     index_cout = 0
 
+        print(result_list)
         if result_list == None or len(result_list) == 0:
             return []
         else:
