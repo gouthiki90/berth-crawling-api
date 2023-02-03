@@ -58,6 +58,8 @@ def incheon_download():
                     '<br/><p class="sub_txt">', '')
 
                 incheon_schedule_data = remove_all_tags
+                
+                print(incheon_schedule_data)
 
                 if index_cout == 1:
                     # dict으로 만들기
@@ -82,28 +84,36 @@ def incheon_download():
                 elif index_cout == 5:
                     result_dict['year'] = incheon_schedule_data
                 elif index_cout == 6:
-                    result_dict['csdhpPrarnde'] = incheon_schedule_data
+                    # 선명
+                    result_dict['trminlShipnm'] = incheon_schedule_data
                 elif index_cout == 7:
-                    result_dict['carryFiniDay'] = incheon_schedule_data
-                elif index_cout == 8:
+                    # 출항일시
                     result_dict['tkoffPrarnde'] = incheon_schedule_data
+                elif index_cout == 8:
+                    # 반입마감
+                    result_dict['carryFiniDay'] = incheon_schedule_data
                 elif index_cout == 9:
-                    result_dict['wtorcmpCode'] = incheon_schedule_data
+                    result_dict['csdhpPrarnde'] = incheon_schedule_data
                 elif index_cout == 10:
-                    result_dict['landngQy'] = incheon_schedule_data
+                    # wtorcmpCode
+                    result_dict['wtorcmpCode'] = incheon_schedule_data
                 elif index_cout == 11:
-                    result_dict['shipngQy'] = incheon_schedule_data
+                    # 양하
+                    result_dict['landngQy'] = incheon_schedule_data
                 elif index_cout == 12:
+                    # 적하
+                    result_dict['shipngQy'] = incheon_schedule_data
+                elif index_cout == 13:
+                    # SH
                     result_dict['shifting'] = incheon_schedule_data
 
-                # 13번일 때 담아주기
+                # 14번일 때 담아주기
                 if index_cout == 13:
                     # heap point 때문에 깊은 복사를 해서 리스트에 담기
                     copy_result = result_dict.copy()
                     result_list.append(copy_result)
                     index_cout = 0
 
-        print(result_list)
         if result_list == None or len(result_list) == 0:
             return []
         else:
@@ -111,6 +121,3 @@ def incheon_download():
 
     except Exception as e:
         print(e)
-
-
-incheon_download()
