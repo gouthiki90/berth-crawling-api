@@ -3,6 +3,7 @@ from phang_download import pohang_download
 from ulsan_download import ulsan_download
 from gwongyang_download import gwaongyang_download
 from busan_download import busan_download
+from incheon_remake_download import incheon_download
 from get_req_urls import req_url_PH, query_date_PH
 from get_req_urls import req_url_US
 from get_req_urls import req_url_GW
@@ -24,9 +25,11 @@ async def get_forwarder():
     await asyncio.sleep(3)
     busan_download(req_url_BS)
     await asyncio.sleep(3)
+    incheon_download()
+    await asyncio.sleep(3)
     print("::: end schedule... :::")
 
-aioschedule.every(10).minutes.do(get_forwarder)
+aioschedule.every(30).seconds.do(get_forwarder)
 loop = asyncio.get_event_loop()
 
 while True:
