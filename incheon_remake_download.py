@@ -58,7 +58,7 @@ def incheon_download():
                     '<br/><p class="sub_txt">', '')
 
                 incheon_schedule_data = remove_all_tags
-                
+
                 print(incheon_schedule_data)
 
                 if index_cout == 1:
@@ -114,10 +114,12 @@ def incheon_download():
                     result_list.append(copy_result)
                     index_cout = 0
 
-        if result_list == None or len(result_list) == 0:
+        if result_list == None:
             return []
         else:
             no_connection_test.postToHangman(result_list)
 
     except Exception as e:
         print(e)
+    finally:
+        response.close()
