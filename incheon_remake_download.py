@@ -17,7 +17,7 @@ def incheon_download():
     # 칼럼 카운트
     index_cout = 0
     # 인천 페이징 카운트
-    page_count = ['1', '2', '3']
+    page_count = ['1', '2', '3', '4', '5']
     # 스케줄 리스트
     result_list = []
 
