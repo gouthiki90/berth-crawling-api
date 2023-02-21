@@ -87,13 +87,13 @@ def incheon_download():
                     # 선명
                     result_dict['trminlShipnm'] = incheon_schedule_data
                 elif index_cout == 7:
-                    # 출항일시
-                    result_dict['tkoffPrarnde'] = incheon_schedule_data
+                    # 입항일시
+                    result_dict['csdhpPrarnde'] = incheon_schedule_data
                 elif index_cout == 8:
                     # 반입마감
                     result_dict['carryFiniDay'] = incheon_schedule_data
                 elif index_cout == 9:
-                    result_dict['csdhpPrarnde'] = incheon_schedule_data
+                    result_dict['tkoffPrarnde'] = incheon_schedule_data
                 elif index_cout == 10:
                     # wtorcmpCode
                     result_dict['wtorcmpCode'] = incheon_schedule_data
@@ -123,3 +123,6 @@ def incheon_download():
         print(e)
     finally:
         response.close()
+
+
+incheon_download()
