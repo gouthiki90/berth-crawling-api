@@ -123,6 +123,3 @@ def incheon_download():
         print(e)
     finally:
         response.close()
-
-
-incheon_download()
