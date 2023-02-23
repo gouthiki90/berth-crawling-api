@@ -17,7 +17,7 @@ def incheon_download():
     # 칼럼 카운트
     index_cout = 0
     # 인천 페이징 카운트
-    page_count = ['1', '2', '3']
+    page_count = ['1', '2', '3', '4', '5']
     # 스케줄 리스트
     result_list = []
 
@@ -58,7 +58,7 @@ def incheon_download():
                     '<br/><p class="sub_txt">', '')
 
                 incheon_schedule_data = remove_all_tags
-                
+
                 print(incheon_schedule_data)
 
                 if index_cout == 1:
@@ -87,13 +87,13 @@ def incheon_download():
                     # 선명
                     result_dict['trminlShipnm'] = incheon_schedule_data
                 elif index_cout == 7:
-                    # 출항일시
-                    result_dict['tkoffPrarnde'] = incheon_schedule_data
+                    # 입항일시
+                    result_dict['csdhpPrarnde'] = incheon_schedule_data
                 elif index_cout == 8:
                     # 반입마감
                     result_dict['carryFiniDay'] = incheon_schedule_data
                 elif index_cout == 9:
-                    result_dict['csdhpPrarnde'] = incheon_schedule_data
+                    result_dict['tkoffPrarnde'] = incheon_schedule_data
                 elif index_cout == 10:
                     # wtorcmpCode
                     result_dict['wtorcmpCode'] = incheon_schedule_data
@@ -114,10 +114,12 @@ def incheon_download():
                     result_list.append(copy_result)
                     index_cout = 0
 
-        if result_list == None or len(result_list) == 0:
+        if result_list == None:
             return []
         else:
             no_connection_test.postToHangman(result_list)
 
     except Exception as e:
         print(e)
+    finally:
+        response.close()
