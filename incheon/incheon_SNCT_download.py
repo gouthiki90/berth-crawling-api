@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
-from crud.no_connection_test import postToHangman
+from no_connection_test import postToHangman
 
 now = datetime.now()
 before = now - timedelta(days=1)

@@ -1,9 +1,9 @@
-from crud.no_connection_test import postToHangman
 from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
 import re
+from no_connection_test import postToHangman
 
 now = datetime.now()
 before = now - timedelta(days=1)
@@ -63,10 +63,10 @@ def incheon_E1_dowonload():
 
             data_check_list.append(result)
 
-            if data_check_list == None:
-                return []
-            else:
-                postToHangman(data_check_list)
+        if data_check_list == None:
+            return []
+        else:
+            postToHangman(data_check_list)
 
     except Exception as e:
         print(e)
