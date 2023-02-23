@@ -1,5 +1,5 @@
 # 스케쥴 테스트
-from eTrans_download import download_etrans
+from temp.eTrans_download import download_etrans
 from get_req_urls import eTrans_url
 import aioschedule as schedule
 import asyncio

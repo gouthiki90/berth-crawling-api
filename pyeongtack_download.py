@@ -1,5 +1,5 @@
 import requests
-import no_connection_test
+import crud.no_connection_test as no_connection_test
 
 
 def pyeongtack_download(req_url, query_date, query_sort, query_page):
