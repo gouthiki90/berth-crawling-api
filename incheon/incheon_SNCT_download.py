@@ -53,7 +53,6 @@ def incheon_SNCT_download():
                 "wtorcmpCode": wtorcmp_code,
                 "berthCode": berth_code,
                 "trminlVoyg": trminl_voyg,
-                "shipRute": ship_rute,
                 "carryFiniDay": carry_fin_day,
                 "csdhpPrarnde": csdhp_prarnde,
                 "tkoffPrarnde": tkoff_prarnde,
