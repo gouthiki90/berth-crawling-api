@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
-from no_connection_test import postToHangman
+from .no_connection_test import postToHangman
 
 # 날짜 세팅
 now = datetime.now()
@@ -84,6 +84,3 @@ def incheon_HJIT_download():
 
     finally:
         response.close()
-
-
-incheon_HJIT_download()
