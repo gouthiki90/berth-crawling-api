@@ -52,7 +52,7 @@ def incheon_E1_dowonload():
             # dict로 만들기
             result = {
                 "oid": oid,
-                "trminlCode": "E1",
+                "trminlCode": "E1CT",
                 "berthCode": berth_code,
                 "trminlVoyg": trminl_voyg,
                 "trminlShipnm": trminl_shipnm,
