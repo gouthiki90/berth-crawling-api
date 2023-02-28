@@ -6,9 +6,11 @@ from incheon.incheon_E1_donwload import incheon_E1_dowonload
 from incheon.incheon_HJIT_download import incheon_HJIT_download
 from incheon.incheon_ICT_download import incheon_ICT_download
 from incheon.incheon_SNCT_download import incheon_SNCT_download
+from busan_download import busan_download
 from get_req_urls import req_url_PH, query_date_PH
 from get_req_urls import req_url_US
 from get_req_urls import req_url_GW
+from get_req_urls import req_url_BS
 import asyncio
 import aioschedule
 import time
@@ -17,6 +19,9 @@ import time
 async def get_forwarder():
     # 터미널 크롤링
     print("::: start schedule... :::")
+    await asyncio.sleep(3)
+    print("::: busan schedule... :::")
+    busan_download(req_url_BS)
     await asyncio.sleep(3)
     print("::: pohang schedule... :::")
     pohang_download(req_url_PH, query_date_PH)
