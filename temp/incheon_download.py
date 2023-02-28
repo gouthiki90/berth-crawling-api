@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
-import no_connection_test
+import crud.no_connection_test as no_connection_test
 from datetime import datetime, timedelta
 
 # 날짜 세팅

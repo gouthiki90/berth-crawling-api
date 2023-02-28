@@ -1,6 +1,6 @@
 import busan_download
-import my_sql_connection
-import no_connection_test
+import crud.my_sql_connection as my_sql_connection
+import crud.no_connection_test as no_connection_test
 
 # 모선항차 기준으로 data 중복 체크
 

@@ -1,6 +1,6 @@
 import requests
-from my_sql_connection import select_container
-from no_connection_test import putToHangman
+from crud.my_sql_connection import select_container
+from crud.no_connection_test import putToHangman
 
 
 def download_etrans(url):

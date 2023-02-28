@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
 import requests
-import no_connection_test
+import crud.no_connection_test as no_connection_test
 
 
 def pohang_download(req_url, query_date):
