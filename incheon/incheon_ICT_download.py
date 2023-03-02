@@ -38,8 +38,6 @@ def incheon_ICT_download():
             split_text = get_texts.split("/")
 
             # 모선항차 문자열 가공
-            print(get[2])
-
             get_oid = str(get[2])
             remove_n = get_oid.replace("\n", "")
             remove_t = remove_n.replace("\t", "")
