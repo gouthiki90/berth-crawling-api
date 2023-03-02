@@ -19,7 +19,12 @@ def busan_download(req_url):
         item = items['item']
 
         for index, result in enumerate(item, 1):
-            result['oid'] = result['trminlVoyg']
+
+            if result['trminlCode'] == "BPTG":
+                result['oid'] = result['trminlVoyg'] + '-' + "BPTG"
+            else:
+                result['oid'] = result['trminlVoyg']
+
             data_check_list.append(result)
 
         if data_check_list == None:
