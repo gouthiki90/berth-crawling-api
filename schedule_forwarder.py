@@ -10,7 +10,6 @@ from busan_download import busan_download
 from get_req_urls import req_url_PH, query_date_PH
 from get_req_urls import req_url_US
 from get_req_urls import req_url_GW
-from get_req_urls import req_url_BS
 import asyncio
 import aioschedule
 import time
@@ -21,19 +20,16 @@ async def get_forwarder():
     print("::: start schedule... :::")
     await asyncio.sleep(3)
     print("::: busan schedule... :::")
-    busan_download(req_url_BS)
+    busan_download()
     await asyncio.sleep(3)
     print("::: pohang schedule... :::")
     pohang_download(req_url_PH, query_date_PH)
-    print("::: pohang schedule... :::")
     await asyncio.sleep(3)
     print("::: ulsan schedule... :::")
     ulsan_download(req_url_US)
-    print("::: ulsan schedule... :::")
     await asyncio.sleep(3)
     print("::: gwongyang schedule... :::")
     gwaongyang_download(req_url_GW)
-    print("::: gwang schedule... :::")
     await asyncio.sleep(3)
     print("::: incheon E1 schedule... :::")
     incheon_E1_dowonload()
@@ -54,10 +50,22 @@ loop = asyncio.get_event_loop()
 
 while True:
     try:
+        print('::: doing schedules... :::')
+        print('-'*40)
+        print('::: now time :::')
+        print('-'*40)
+        print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+        print('-'*40)
+        print('::: schedule pending time :::')
+        print('-'*40)
+        print(aioschedule.idle_seconds())
+        print('-'*40)
+
         loop.run_until_complete(aioschedule.run_pending())
         time.sleep(1)
 
     except Exception as e:
         print(e)
         print("::: erorr!! now closing... :::")
+        aioschedule.cancel_job(get_forwarder)
         loop.close()
