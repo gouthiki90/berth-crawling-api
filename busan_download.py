@@ -46,6 +46,7 @@ def busan_download():
             else:
                 result['oid'] = result['trminlVoyg']
 
+            result['csdhpPrarnde'] = result['csdhpPrarnde'][0:-3]
             data_check_list.append(result)
 
         if data_check_list == None:
