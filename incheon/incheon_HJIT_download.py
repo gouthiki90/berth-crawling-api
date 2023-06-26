@@ -4,25 +4,26 @@ from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
 from .no_connection_test import postToHangman
 
-# 날짜 세팅
-now = datetime.now()
-before = now - timedelta(days=1)
-
-incheon_HJIT = "http://59.17.254.10:9130/esvc/berth/BerthAction.do"
-
-payload = {
-    "cmd": "BerthScheduleList",
-    "nowPage": "1",  # 페이지 수
-    "scPeriod": "14",  # 2주
-    "menuID": "01",  # 메뉴
-    "subMenuID": "1",  # 서브 메뉴
-    "pgID": "01",
-    "scBaseDate": f"{before.strftime('%Y-%m-%d')}",  # 서치 날짜
-    "rowPerPage": "50"  # row 수
-}
-
 
 def incheon_HJIT_download():
+
+    # 날짜 세팅
+    now = datetime.now()
+    before = now - timedelta(days=1)
+
+    incheon_HJIT = "http://59.17.254.10:9130/esvc/berth/BerthAction.do"
+
+    payload = {
+        "cmd": "BerthScheduleList",
+        "nowPage": "1",  # 페이지 수
+        "scPeriod": "14",  # 2주
+        "menuID": "01",  # 메뉴
+        "subMenuID": "1",  # 서브 메뉴
+        "pgID": "01",
+        "scBaseDate": f"{before.strftime('%Y-%m-%d')}",  # 서치 날짜
+        "rowPerPage": "50"  # row 수
+    }
+
     data_check_list = []
     try:
 

@@ -4,18 +4,19 @@ from bs4 import BeautifulSoup
 from html_table_parser import parser_functions
 from .no_connection_test import postToHangman
 
-now = datetime.now()
-before = now - timedelta(days=1)
-after = before + timedelta(days=8)
-
-incheon_SNCT_url = 'https://snct.sun-kwang.co.kr/infoservice/webpage/vessel/vslScheduleText.jsp?startDate={}&endDate={}'.format(
-    before.strftime('%Y-%m-%d'), after.strftime('%Y-%m-%d'))
 
 # incheon SNCT
-
-
 def incheon_SNCT_download():
+    now = datetime.now()
+
+    before = now - timedelta(days=1)
+    after = before + timedelta(days=8)
+
+    incheon_SNCT_url = 'https://snct.sun-kwang.co.kr/infoservice/webpage/vessel/vslScheduleText.jsp?startDate={}&endDate={}'.format(
+        before.strftime('%Y-%m-%d'), after.strftime('%Y-%m-%d'))
+
     data_check_list = []
+
     try:
         response = requests.request("GET", incheon_SNCT_url)
         soup = BeautifulSoup(response.text, 'html.parser')

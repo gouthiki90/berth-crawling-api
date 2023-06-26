@@ -5,17 +5,15 @@ from html_table_parser import parser_functions
 import re
 from .no_connection_test import postToHangman
 
-now = datetime.now()
-before = now - timedelta(days=1)
-after = before + timedelta(days=8)
-
-incheon_E1_url = 'http://www.e1ct.co.kr/info/terminal/berthText?searchStartDt={}&searchEndDt={}'.format(
-    before.strftime("%Y-%m-%d"), after.strftime("%Y-%m-%d"))
 
 # 인천 E1 터미널 스케줄
-
-
 def incheon_E1_dowonload():
+    now = datetime.now()
+    before = now - timedelta(days=1)
+    after = before + timedelta(days=8)
+
+    incheon_E1_url = 'http://www.e1ct.co.kr/info/terminal/berthText?searchStartDt={}&searchEndDt={}'.format(
+        before.strftime("%Y-%m-%d"), after.strftime("%Y-%m-%d"))
     data_check_list = []
     try:
         response = requests.request("GET", incheon_E1_url)
